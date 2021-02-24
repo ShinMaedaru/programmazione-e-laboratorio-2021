@@ -4,7 +4,7 @@
 using std::string;
 
 
-void sort(string& s){
+void sort(string& s){ // riordina i caratteri in ordine alfabetico
 
    char temp;
    
@@ -22,7 +22,7 @@ void sort(string& s){
    }
 }
 
-string remove(const string& s){
+string remove(const string& s){ //rimuove gli spazzi di una stringa
     string res="";
     for(char car: s){
         if(car!=' '){
