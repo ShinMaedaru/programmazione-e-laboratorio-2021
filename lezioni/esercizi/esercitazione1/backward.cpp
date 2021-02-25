@@ -58,19 +58,22 @@ int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
 
-    string s = "baf";
-    string s2 ="abcdefg";
+    string s = "bza";
+    string s2 ="abcdefghilmnopqrstuvz";
     int index1=0;
     int index2=0;
-    int result=0;
-    
+    int result;
+    int ccw;
+    int cw;
     for (char c:s){
-        if (counterClockWise(c,s2,index1)<clockWise(c,s2,index2)){
-            result += counterClockWise(c,s2,index1);
+            cw = clockWise(c,s2,index2);
+            ccw =counterClockWise(c,s2,index1);
+        if (cw<ccw){
+            result += cw;
             index2= index1;
         }
         else{
-            result +=  clockWise(c,s2,index2);
+            result +=  ccw;
             index1= index2;
 
         }
