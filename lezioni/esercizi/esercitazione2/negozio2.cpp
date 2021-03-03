@@ -15,7 +15,7 @@ string rtrim(const string &);
  */
 bool comparator(string a,string b)
 {
-    return a<b;
+    return a>b;
 }
 
 size_t max(const vector<int>& vin){
@@ -23,10 +23,8 @@ size_t max(const vector<int>& vin){
     size_t posmax = 0;
     int m =vin.at(posmax);
     for(size_t i=1; i<vin.size();i++){
-        if(vin.at(i)>=m){
-            
+        if(vin.at(i)>m){
             posmax = i;
-            m = vin.at(i);
         }
     }
     return posmax;
@@ -38,44 +36,26 @@ string featuredProduct(vector<string> products) {
     //int dim = products.size();
     vector<int> occorrenze;
     for(string i:products){
-        cout<<i<<" ";
+       // cout<<i<<" ";
         occorrenze.push_back(count(products.begin(),products.end(),i));
     }
     index = max(occorrenze);
-    cout<<endl;
+    // cout<<endl;
 
-    for(int i:occorrenze){
+  /*  for(int i:occorrenze){
         cout<<i<<" ";
-    }
+    }*/
     return products.at(index); 
 
 }
 
-
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
 
-    string products_count_temp;
-    getline(cin, products_count_temp);
-
-    int products_count = stoi(ltrim(rtrim(products_count_temp)));
-
-    vector<string> products(products_count);
-
-    for (int i = 0; i < products_count; i++) {
-        string products_item;
-        getline(cin, products_item);
-
-        products[i] = products_item;
-    }
-
-    string result = featuredProduct(products);
-
-    fout << result << "\n";
-
-    fout.close();
-
+    vector<string> products={"bbbb","bbbb","aaaa","dddd","aaaa"};
+    string res = featuredProduct(products);
+    cout<<endl<<res;
+     
     return 0;
 }
 
