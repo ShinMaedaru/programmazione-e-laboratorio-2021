@@ -5,6 +5,46 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(gdb) Avvio Bash in Windows",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "immettere il nome del programma, ad esempio ${workspaceFolder}/a.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "pipeTransport": {
+                "debuggerPath": "/usr/bin/gdb",
+                "pipeProgram": "${env:windir}\\system32\\bash.exe",
+                "pipeArgs": ["-c"],
+                "pipeCwd": ""
+            },
+            "setupCommands": [
+                {
+                    "description": "Abilita la riformattazione per gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+    {
+        "name": "(gdb) Associa",
+        "type": "cppdbg",
+        "request": "attach",
+        "program": "immettere il nome del programma, ad esempio ${workspaceFolder}/a.exe",
+        "processId": "${command:pickProcess}",
+        "MIMode": "gdb",
+        "miDebuggerPath": "/path/to/gdb",
+        "setupCommands": [
+            {
+                "description": "Abilita la riformattazione per gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            }
+        ]
+    },
+        {
             "name": "g++ - Compila ed esegui il debug del file attivo",
             "type": "cppdbg",
             "request": "launch",
