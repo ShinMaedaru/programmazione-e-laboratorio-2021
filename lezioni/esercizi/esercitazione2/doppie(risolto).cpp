@@ -1,17 +1,16 @@
-//giusto
 #include <string>
 #include <iostream>
 
 using std::string;
 void rimuovidoppie(string &s)
 {
+    int j=0;
     int n = s.length();
     string res = "";
      if (n==0){
          s = res;
-        return;
-    }
-    int j=0;
+        
+    }else{
     res.push_back(s.at(j));
 
     
@@ -25,6 +24,7 @@ void rimuovidoppie(string &s)
     }
    
    s = res;
+    }
 }
 int main() {
     string a;

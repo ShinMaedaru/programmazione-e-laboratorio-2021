@@ -6,7 +6,6 @@ string ltrim(const string &);
 string rtrim(const string &);
 
 
-
 /*
  * Complete the 'featuredProduct' function below.
  *
@@ -35,23 +34,20 @@ size_t max(const vector<int>& vin){
 string featuredProduct(vector<string> products) {
     sort(products.begin(),products.end(),comparator);
     int index;
-    //int dim = products.size();
     vector<int> occorrenze;
     for(string i:products){
-        cout<<i<<" ";
+        //cout<<i<<" ";
         occorrenze.push_back(count(products.begin(),products.end(),i));
     }
     index = max(occorrenze);
-    cout<<endl;
+    //cout<<endl;
 
     for(int i:occorrenze){
-        cout<<i<<" ";
+        //cout<<i<<" ";
     }
     return products.at(index); 
 
 }
-
-
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));

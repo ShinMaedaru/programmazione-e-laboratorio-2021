@@ -30,9 +30,9 @@ void sort(vector<int>& s){
 vector<int> rodOffcut(vector<int> lengths) {
     sort(lengths);
     vector<int> res;
-    int zero = 0;
-    while(zero<lengths.size()){
-        res.push_back(lengths.size()-zero);
+    int temp = 0;
+    while(temp<lengths.size()){
+        res.push_back(lengths.size()-temp);
         int min =1000;
 
     for(int i=0;i<lengths.size();i++){
@@ -43,7 +43,7 @@ vector<int> rodOffcut(vector<int> lengths) {
     for(int i=0;i<lengths.size();i++){
         lengths.at(i) = lengths.at(i)-min;
         if(lengths.at(i)==0)
-        zero++;
+        temp++;
     }
     }
     return res;
