@@ -18,6 +18,7 @@ class Frazione{
     void minimi_termini();
 };
 
+
 long MCD(long a,long b){ //funzione che trova il massimo comun divisiore
       if (b == 0)
         return a;
@@ -63,7 +64,6 @@ Frazione Frazione::somma(const Frazione &f) const{
         return res;        
     }
 }
-
 int main() {
     long n1, n2, d1, d2;
     

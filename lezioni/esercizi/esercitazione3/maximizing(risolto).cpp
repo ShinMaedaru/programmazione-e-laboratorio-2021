@@ -6,7 +6,6 @@ string ltrim(const string &);
 string rtrim(const string &);
 
 
-
 /*
  * Complete the 'getMaxValue' function below.
  *
@@ -59,34 +58,32 @@ bool ordine(vector<int>& v){
     
      return inv;
 }
-int getMaxValue(vector<int> arr) {
-     for(int i:arr){
-        cout<<i<<" ";
-    }
-    cout<<std::endl<<"//////////////////////////"<<std::endl;
-    sort(arr);
-    int min = posmin(arr);
-    arr.at(min) = 1;
-    int n= arr.size();
-   
-     for(int i:arr){
-        cout<<i<<" ";
-    }
-    cout<<std::endl<<"//////////////////////////"<<std::endl;
 
-    while(ordine(arr)!=true){
-        
+void swap(int& a,int& b){
+    int c; //variabile temporanea per lo swap
+    c=a;
+    a=b;
+    b=c;
+
+}
+
+int getMaxValue(vector<int> arr) {
+    sort(arr.begin(),arr.end());
+    //sort(arr);
+    //int min = posmin(arr);
+    //swap(arr.at(min),arr.at(0));
+    arr.at(0) = 1;
+    int n= arr.size();
         for(int i = 0;i<n-1;++i){
             if(arr[i+1]-arr[i] > 1){
                 arr[i+1] = arr[i]+1;
         }
-    }
+    
 }   
-     for(int i:arr){
-        cout<<i<<" ";
-    }
+ 
     return arr[n-1];
 }
+
 int main()
 {
     ofstream fout(getenv("OUTPUT_PATH"));
