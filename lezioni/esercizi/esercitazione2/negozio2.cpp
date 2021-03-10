@@ -17,7 +17,7 @@ bool comparator(string a,string b)
     return a<b;
 }
 
-size_t max(const vector<int>& vin){
+int max(const vector<int>& vin){
 
     size_t posmax = 0;
     int m =vin.at(posmax);
