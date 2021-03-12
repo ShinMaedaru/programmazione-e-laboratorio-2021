@@ -19,11 +19,16 @@ class Frazione{
 };
 
 
-long MCD(long a,long b){ //funzione che trova il massimo comun divisiore
-      if (b == 0)
-        return a;
-    return MCD(b,a%b); 
+long MCD(long num,long den){//funzione che trova il massimo comun divisiore
+    if(den==0){
+        return num;
+    }
+    return MCD(den,num%den);
 }
+long mcm(long a,long b){ //mimimo comun multiplo
+    return (a/MCD(a,b))*b;
+}
+
 void minimizza(long& num, long& den){ //funzione che rende coprimi il numeratore e il denomiatore
     long m = MCD(num,den);
     num = num/m;
@@ -32,11 +37,6 @@ void minimizza(long& num, long& den){ //funzione che rende coprimi il numeratore
         num = num*(-1);
         den = den*(-1);
     }
-}
-
-long mcm(long a,long b) //mimimo comun multiplo
-{
-    return (a/MCD(a,b))*b;
 }
 
 void Frazione::minimi_termini(){
@@ -50,17 +50,17 @@ Frazione Frazione::somma(const Frazione &f) const{
     long den1 = denominatore;
     long num2 = f.numeratore;
     long den2 = f.denominatore;
-    long l = mcm(den1,den2);
-    if(l == 1){
+    long minComunMuliplo = mcm(den1,den2);
+    if(minComunMuliplo == 1){
         res.denominatore = den1;
         res.numeratore = num1 + num2;
         return res;
     }
     else{
-        num1 = num1*(l/den1);
-        num2 = num2*(l/den2);
-        res.denominatore = l;
-        res.numeratore = num1 +num2;
+        num1 = num1*(minComunMuliplo/den1);
+        num2 = num2*(minComunMuliplo/den2);
+        res.denominatore = minComunMuliplo;
+        res.numeratore = num1 + num2;
         return res;        
     }
 }
@@ -75,7 +75,7 @@ int main() {
     Frazione res = f1.somma(f2);
     
     res.minimi_termini();
-    
+
     res.stampa();
     
     return 0;
