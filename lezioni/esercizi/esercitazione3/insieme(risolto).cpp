@@ -52,35 +52,32 @@ class Insieme{
     
 };
 
-
-vector<int> rimuoviDoppie(vector<int>& v){
+void rimuoviDoppi(vector<int>& v){
+    /*funzione che chiede un array ordinato e
+    restituisce al post dell'originale
+    un nuovo array senza i doppioni.*/         
     int j=0;
     int n = v.size();
     vector<int> res;
      if (n==0){
-         v = res;
-        
+         v = res;    
     }else{
     res.push_back(v.at(j));
-
-    
     for (int i=1;i<n;++i){
-
      if (v.at(j) != v.at(i)){
           ++j;
           v.at(j) = v.at(i);
          res.push_back(v.at(j));
      }
-    }
-   
+    }   
 }
-return res;
+    v = res;
 }
 
-void Insieme::sort(){ //funzione che riordina un array   
+void Insieme::sort(){ 
+//metodo basato sulla funzione bubble sort vista a lezione
    int temp;
    int n = myv.size();
-   
     for (int i = 0; i < n-1; i++) {
       for (int j = i+1; j < n; j++) {
          if (myv.at(i) > myv.at(j)) {
@@ -93,20 +90,23 @@ void Insieme::sort(){ //funzione che riordina un array
 }
 
 void Insieme::stampa() const{
+    //metodo che riordina,rimuove ii duplicati e stampa un'array(insieme)
     
-    
-    Insieme r;
+    Insieme r;//non ho capito come richiamare sort sull'istanza attuale quindi faccio un nuovo insieme
     r.myv = myv;
     r.sort();
-    vector<int> res = rimuoviDoppie(r.myv);
-    for(int i:res){
+    //vector<int> res =
+    rimuoviDoppi(r.myv);
+    for(int i:r.myv){
         cout<<i<<std::endl;
     }
 };
 
 Insieme Insieme::intersezione(const Insieme &a) const{
+    //metodo che restituisce un nuovo insieme il cui vettore
+    //è composto dagli elementi comuni dei 2 vettori(chaiamnte,parametro funzione)
+    //siccome si usa un doppio ciclo for ci saranno dei duplicati che verranno eliminati dalla funzione stampa
     Insieme res;  
-    
     int n = myv.size();
     int m = a.myv.size();
     for (int i = 0;i<n;++i){
@@ -116,11 +116,13 @@ Insieme Insieme::intersezione(const Insieme &a) const{
             }
         }
     }
+    
     return res;
 };
 
 Insieme Insieme::unione(const Insieme &a) const{
-    
+    //metodo che restituisce un nuovo insieme il cui vettore
+    //è composto dal vettore del chiamante più il parametro della funzione
     Insieme res;
     res.myv = myv;
     for(int i:a.myv){
@@ -131,7 +133,6 @@ Insieme Insieme::unione(const Insieme &a) const{
 
 
 /*implementa le funzioni stampa, intersezione, unione e sort!*/
-
 int main() {
     Insieme a;
     Insieme b;
