@@ -1,3 +1,4 @@
+
 #include<iostream>
 
 class Frazione{
@@ -20,13 +21,14 @@ class Frazione{
 
 
 long MCD(long num,long den){//funzione che trova il massimo comun divisiore
-    if(den==0){
+    if(den==0){ //quella vista a lezione con il prof marin mi dava errore quindi ho usato questa formula
         return num;
     }
     return MCD(den,num%den);
 }
 long mcm(long a,long b){ //mimimo comun multiplo
-    return (a/MCD(a,b))*b;
+    long res = (a/MCD(a,b))*b;
+    return res;
 }
 
 void minimizza(long& num, long& den){ //funzione che rende coprimi il numeratore e il denomiatore
@@ -46,7 +48,8 @@ void Frazione::minimi_termini(){
 }
 Frazione Frazione::somma(const Frazione &f) const{
     Frazione res{0,0};
-    long num1 = numeratore;
+    //Inizializzo ogni numerato e denominatore per facilitare la scrittura e lettura
+    long num1 = numeratore; 
     long den1 = denominatore;
     long num2 = f.numeratore;
     long den2 = f.denominatore;
