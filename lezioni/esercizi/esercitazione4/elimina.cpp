@@ -55,41 +55,30 @@ void leggi(Lista& l) {
     }
 }
 
-void inserisci(Lista& precedente,Lista& successivo,Lista& aggiunto){
-    if(precedente->next ==successivo){
-        aggiunto->next = successivo;
-        precedente->next = aggiunto;
+void cancellaElemento(Lista& precedente,Lista& successivo){
+    if(precedente->info == successivo->info){
+        precedente->next = successivo->next;
+        delete successivo;
     }
 }
-void duplica(Lista& l)
-{
-    //se la lista ha almeno un elemento
-    if(l){
-    //se la lista ha un solo elemento faccio un append
-    if(l->next == nullptr){
-    append(l,l->info);
-    }
-    else{
-        //creo una nuova cella di supporto
-        Lista nuovo = new Cella();
-        //il supporto prende il valore corrente
-        nuovo->info = l->info;
-        //il supporto punta a nullo
-        nuovo->next = nullptr;
-        //in mezzo all'elemento di testa e di coda metto il supporto
-        inserisci(l,l->next,nuovo);
 
-        //siccome il supporto diventa la coda itero sul next del supporto
-     duplica(nuovo->next);
-    }
-    }
+void elimina_dup(Lista& l)
+{
+    
 }
 
 int main() {
-    Lista l = nullptr;
-    leggi(l);
-    duplica(l);
-    stampa_lista(l);
+    Lista l = new Cella();
+    l->info = 4;
+    l->next = nullptr;
+    Lista l2 = new Cella();
+    l2->info = 2;
+    l2->next = l;
+    Lista l3 = new Cella();
+    l3->info = 2;
+    l3->next = l2;
+    cancellaElemento(l3,l2);
+    stampa_lista(l3);
     distruggi(l);
     return 0;
 }
