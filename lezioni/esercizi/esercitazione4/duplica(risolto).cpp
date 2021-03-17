@@ -55,6 +55,10 @@ void leggi(Lista& l) {
     }
 }
 
+/*funzione che dato un elemento in testa detto precentente,uno
+in coda detto successivo e una cella detta aggiunto
+inserisce in mezzo alla testa e alla coda la nuova cella aggiunto
+funzione presa dal libro di testo di C riadattata per C++*/
 void inserisci(Lista& precedente,Lista& successivo,Lista& aggiunto){
     if(precedente->next ==successivo){
         aggiunto->next = successivo;
@@ -63,7 +67,7 @@ void inserisci(Lista& precedente,Lista& successivo,Lista& aggiunto){
 }
 void duplica(Lista& l)
 {
-    //se la lista ha almeno un elemento
+    //se la lista ha almeno un elemento 
     if(l){
     //se la lista ha un solo elemento faccio un append
     if(l->next == nullptr){
