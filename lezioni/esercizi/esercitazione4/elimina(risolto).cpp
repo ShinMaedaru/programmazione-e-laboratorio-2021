@@ -56,29 +56,37 @@ void leggi(Lista& l) {
 }
 
 void cancellaElemento(Lista& precedente,Lista& successivo){
-    if(precedente->info == successivo->info){
-        precedente->next = successivo->next;
-        delete successivo;
+        if (successivo->next != nullptr){
+        precedente = successivo->next;    
+          
+        successivo = nullptr;
+        } else{
+          precedente = successivo;
+        }
+}
+
+void elimina_dup(Lista& l){
+ if(l){
+      if(l->next != nullptr){
+        if(l->info ==l->next->info){
+          l = l->next;          
+          elimina_dup(l);
+
+        }else{
+          elimina_dup(l->next);
+ 
+        }
+
+      } 
+
     }
 }
 
-void elimina_dup(Lista& l)
-{
-    
-}
-
 int main() {
-    Lista l = new Cella();
-    l->info = 4;
-    l->next = nullptr;
-    Lista l2 = new Cella();
-    l2->info = 2;
-    l2->next = l;
-    Lista l3 = new Cella();
-    l3->info = 2;
-    l3->next = l2;
-    cancellaElemento(l3,l2);
-    stampa_lista(l3);
+    Lista l = nullptr;
+    leggi(l);
+    elimina_dup(l);
+    stampa_lista(l);
     distruggi(l);
     return 0;
 }
