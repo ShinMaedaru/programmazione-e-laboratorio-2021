@@ -66,22 +66,34 @@ void reverse(Lista &l){
         prev = curr;
         curr = next;
     }
-    l = prev;
+    l= prev;
 }
-//Lista somma_acc(const Lista& l) {}
+Lista somma_acc(const Lista& l) {
+    if(!l){
+      return nullptr;
+    }
+    else{
+      if(!l->next){
+        Lista b = new Cella();
+        b = nullptr;
+        append(b,l->info);
+        return b;
+      }
+      else{
+        Lista a =somma_acc(l->next);
+        Lista risposta = new Cella{l->info+a->info,a};
+        return risposta;
+      }
+    }
+}
+
 
 int main() {
     Lista l = nullptr;
-    //leggi(l);
-    append(l,1);
-    append(l,2);
-    append(l,3);
-    append(l,4);
-    append(l,5);
-    reverse(l);
-    //Lista ris = somma_acc(l);
-    stampa_lista(l);
+    leggi(l);
+    Lista ris = somma_acc(l);
+    stampa_lista(ris);
     distruggi(l);
-    //distruggi(ris);
+    distruggi(ris);
     return 0;
 }
