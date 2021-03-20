@@ -56,11 +56,12 @@ void leggi(Lista& l) {
 }
 
 void inserisci(Lista& precedente,Lista& successivo,Lista& aggiunto){
-    if(precedente->next ==successivo){
+    if(precedente->next == successivo){
         aggiunto->next = successivo;
         precedente->next = aggiunto;
     }
 }
+
 void duplica(Lista& l)
 {
     //se la lista ha almeno un elemento
@@ -84,11 +85,31 @@ void duplica(Lista& l)
     }
     }
 }
+void duplica2(Lista& l){
 
+    if(l){
+        if(l->next == nullptr){
+            append(l,l->info);     
+        }
+        
+    for(Lista iter = l; iter != nullptr && iter->next != nullptr; iter = iter->next){ 
+        
+        Lista nuovo = new Cella();
+        //il supporto prende il valore corrente
+        nuovo->info = iter->info;
+        //il supporto punta a nullo
+        nuovo->next = nullptr;
+        inserisci(iter,iter->next,nuovo);
+        iter->next =nuovo->next;
+    }
+    }
+}
 int main() {
     Lista l = nullptr;
-    leggi(l);
-    duplica(l);
+    append(l,1);
+    append(l,2);
+    append(l,4);
+    duplica2(l);
     stampa_lista(l);
     distruggi(l);
     return 0;
