@@ -83,7 +83,7 @@ void duplica(Lista& l)
         //siccome il supporto diventa la coda itero sul next del supporto
      duplica(nuovo->next);
     }
-    }
+  }
 }
 void duplica2(Lista& l){
 
@@ -91,7 +91,7 @@ void duplica2(Lista& l){
         if(l->next == nullptr){
             append(l,l->info);     
         }
-        
+
     for(Lista iter = l; iter != nullptr && iter->next != nullptr; iter = iter->next){ 
         
         Lista nuovo = new Cella();
