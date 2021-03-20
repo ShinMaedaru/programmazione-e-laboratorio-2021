@@ -89,20 +89,30 @@ Lista somma_acc(const Lista& l) {
 
 
 Lista somma_acc2(const Lista& l) {//mia versione
+   //caso base: lista non nulla
     if(l){
+        //caso base: unica cella
         if(l->next==nullptr){
+            //faccio una nuova cella 
             Lista res = new Cella();
             res = nullptr;
             append(res,l->info);
+            //ritorno la nuova cella
             return res; 
         }else{
+            //lista temporanea che ritorna il valore ricorsivo
+            //delle celle seguenti
             Lista temp = somma_acc(l->next);
+            //lista risultato che contiene la somma dei valori della cella
+            //attuale e successvia e l'indirizzo di temp
             Lista res = new Cella();
             res->info = l->info+temp->info;
             res->next = temp;
             return res;
         }
+        //caso base: lista nulla
     }else{
+        //ritorno una nuova lista nulla
         Lista res = new Cella();
         res = nullptr;
         return res;
