@@ -74,19 +74,40 @@ Lista somma_acc(const Lista& l) {
     }
     else{
       if(!l->next){
-        Lista b = new Cella();
-        b = nullptr;
-        append(b,l->info);
-        return b;
+        Lista res = new Cella();
+        res = nullptr;
+        append(res,l->info);
+        return res;
       }
       else{
-        Lista a =somma_acc(l->next);
-        Lista risposta = new Cella{l->info+a->info,a};
-        return risposta;
+        Lista temp =somma_acc(l->next);
+        Lista res = new Cella{l->info+temp->info,temp};
+        return res;
       }
     }
 }
 
+
+Lista somma_acc2(const Lista& l) {//mia versione
+    if(l){
+        if(l->next==nullptr){
+            Lista res = new Cella();
+            res = nullptr;
+            append(res,l->info);
+            return res; 
+        }else{
+            Lista temp = somma_acc(l->next);
+            Lista res = new Cella();
+            res->info = l->info+temp->info;
+            res->next = temp;
+            return res;
+        }
+    }else{
+        Lista res = new Cella();
+        res = nullptr;
+        return res;
+    }
+}
 
 int main() {
     Lista l = nullptr;
