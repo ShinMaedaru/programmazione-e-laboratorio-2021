@@ -74,11 +74,8 @@ void elimina_dup(Lista& l){
 
         }else{
           elimina_dup(l->next);
- 
         }
-
-      } 
-
+      }
     }
 }
 
