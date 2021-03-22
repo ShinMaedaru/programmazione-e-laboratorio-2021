@@ -100,6 +100,7 @@ Lista somma_acc2(const Lista& l) {//mia versione
             //ritorno la nuova cella
             return res; 
         }else{
+          
             //lista temporanea che ritorna il valore ricorsivo
             //delle celle seguenti
             Lista temp = somma_acc(l->next);
