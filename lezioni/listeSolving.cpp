@@ -55,37 +55,44 @@ void leggi(Lista& l) {
     }
 }
 
-void cancellaElemento(Lista& precedente,Lista& successivo){
-        if (successivo->next != nullptr){
-        precedente = successivo->next;    
-          
-        successivo = nullptr;
-        } else{
-          precedente = successivo;
-        }
-}
-
-void elimina_dup(Lista& l){
- if(l){
-      if(l->next != nullptr){
-        if(l->info ==l->next->info){
-          l = l->next;          
-          elimina_dup(l);
-
+int elimina_coda(Lista& l ,int n){
+    if(l == nullptr){
+        return 0;
+    }
+    else{//next esiste sempre perchè abbiamo definito il caso base
+        int m = elimina_coda(l->next,n);
+        if(m<n){//caso cella singola
+            delete l;
+            l=nullptr;
+            return m+1;
         }else{
-          elimina_dup(l->next);
- 
+            return m; 
         }
-
-      } 
-
     }
 }
-
+int elimina_testa(Lista& l,int n){
+    if(l==nullptr|| n==0){
+        return 0;
+    }
+    else{
+        Lista supp = l;
+        l = l->next;
+        delete supp;
+        int m = elimina_testa(l,n-1);
+        return n+1;
+        
+    }
+}
 int main() {
     Lista l = nullptr;
-    leggi(l);
-    elimina_dup(l);
+    append(l,1);
+    append(l,1);
+    append(l,3);
+    append(l,4);
+    append(l,5);
+    append(l,6);
+    append(l,7);
+    elimina_coda(l,3);
     stampa_lista(l);
     distruggi(l);
     return 0;

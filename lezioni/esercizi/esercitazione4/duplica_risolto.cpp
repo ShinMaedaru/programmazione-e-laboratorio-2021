@@ -101,6 +101,7 @@ void duplica2(Lista& l){
         nuovo->next = nullptr;
         inserisci(iter,iter->next,nuovo);
         iter->next =nuovo->next;
+        
     }
     }
 }
@@ -109,7 +110,7 @@ int main() {
     append(l,1);
     append(l,2);
     append(l,4);
-    duplica2(l);
+    duplica(l);
     stampa_lista(l);
     distruggi(l);
     return 0;
