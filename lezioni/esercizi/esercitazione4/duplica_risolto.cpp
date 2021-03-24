@@ -79,7 +79,7 @@ void duplica(Lista& l)
         nuovo->next = nullptr;
         //in mezzo all'elemento di testa e di coda metto il supporto
         inserisci(l,l->next,nuovo);
-
+        
         //siccome il supporto diventa la coda itero sul next del supporto
      duplica(nuovo->next);
     }
