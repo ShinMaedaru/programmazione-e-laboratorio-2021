@@ -69,9 +69,9 @@ void elimina_dup(Lista& l){
  if(l){
       if(l->next != nullptr){
         if(l->info ==l->next->info){
-          
+          Lista nuovo = l;
           l = l->next;          
-         
+          delete(nuovo);
           elimina_dup(l);
 
         }else{
