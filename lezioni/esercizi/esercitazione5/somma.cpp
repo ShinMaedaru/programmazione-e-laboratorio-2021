@@ -91,6 +91,7 @@ int somma(Listadl pt, int v) {
     }
     return temp;
 }
+
 int main() {
   Listadl pt{nullptr}, pc{nullptr};
   leggi_lista(pt, pc);
