@@ -68,18 +68,54 @@ void distruggi_lista(Listadl& pt) {
 
 
 void rimuovi_elemento(Listadl& pt, Listadl& pc, int e) {
-    
-    if (pt!=nullptr || pc!=nullptr){
-       if(pt->info == e){
-           Listadl temp = pt;
-           pt = pt->next;
-           pt->prev = nullptr;
-           delete(temp);
-       }
-           
-       } 
-    }
 
+  if(pt){
+        //casistica: il penultimo elemento è uguale ad e 
+        if(pt->next == pc){
+            //se il contenuto della coda è uguale ad e:
+            if(pc->info == e){                    
+                Listadl temp = pc;
+                pc->prev->next = nullptr;
+                pc=pc->prev;
+                delete(temp);
+                //ricomincio la ricorsione perchè manca ancora l'ultimo elemento
+                rimuovi_elemento(pt,pc,e);  
+            }
+        } 
+        //casistica: la coda non è nulla
+
+        if(pt->next != nullptr){
+            //l'elemento attuale della testa è uguale ad e 
+            if(pt->info == e){
+
+                //se prev è uguale a nullptr vuol dire che sono nella testa
+               //CASISTICA FUNZIONANTE
+                if(pt->prev == nullptr){
+                    Listadl temp = pt;
+                    pt = pt->next;
+                    pt->prev = nullptr;
+                    delete(temp);
+                    //ricomincio la ricorsione perchè devo controllare il resto della lista 
+                    rimuovi_elemento(pt,pc,e);  
+                //nel caso l'elemento da rimuovere sia nel mezzo tra due nodi
+
+                //CASISTICA FUNZIONANTE(?)
+
+                }else{     
+                    Listadl temp = pt;
+                    pt->next->prev = pt->prev;
+                    pt=pt->next;
+                    delete(temp);
+                    rimuovi_elemento(pt,pc,e);  
+                }
+            }
+            //nel caso l'info in testa non sia uguale ad e allora 
+            //ricomincio la ricorsione
+            rimuovi_elemento(pt->next,pc,e);  
+        }
+        }
+
+}
 
 int main() {
   Listadl pt{nullptr}, pc{nullptr};
