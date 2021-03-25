@@ -59,12 +59,20 @@ void distruggi(Lista& l) {
 //se non punta a null il ciclo continua il second ciclo ha come limite la len 
 //}
 //se la posizione va oltre il null faccio un controllo che se non mi trovo in null allora fai somma 
+int lunghezza(Lista l){
+    int count = 0;
+    while(l){
+        count++;
+        Lista temp = l;
+        l = l->next;
+        delete(temp);
+    }
+    return count;
+}
+
 string concat(Lista l, int pos, int len) {
    
-    string controll;
-    if(pos == len-1){
-        return controll;
-    }
+    
 }
     
 
