@@ -105,13 +105,27 @@ void duplica2(Lista& l){
     }
     }
 }
+
+int lunghezza(Lista l){
+    int count = 0;
+    while(l){
+        count++;
+        l = l->next;
+    }
+    return count;
+}
+
 int main() {
     Lista l = nullptr;
     append(l,1);
     append(l,2);
     append(l,4);
     duplica(l);
+    
     stampa_lista(l);
+    std::cout<<std::endl;
+    std::cout<<"lunghezza della lista: "<<lunghezza(l)<<std::endl;  
+
     distruggi(l);
     return 0;
 }

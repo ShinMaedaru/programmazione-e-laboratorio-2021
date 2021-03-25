@@ -74,6 +74,16 @@ void duplica(Lista& l)
 }
 
 
+int lunghezza(Lista l){
+    int count = 0;
+    while(l){
+        count++;
+        Lista temp = l;
+        l = l->next;
+        delete(temp);
+    }
+    return count;
+}
 int main() {
     Lista l = nullptr;
     prepend(l,1);
@@ -82,6 +92,7 @@ int main() {
     prepend(l,3);
     duplica(l);
    // leggi(l);
+    std::cout<<lunghezza(l)<<std::endl;  
     stampa_lista(l);
     distruggi(l);
     return 0;
