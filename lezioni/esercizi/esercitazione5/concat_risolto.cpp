@@ -47,6 +47,7 @@ void distruggi(Lista& l) {
 }
 
 
+//funzione ausiliaria che restituisce la lunghezza della lista
 int lunghezza(Lista l){
     int count = 0;
     while(l){
@@ -56,25 +57,42 @@ int lunghezza(Lista l){
     return count;
 } 
 string concat(Lista l, int pos, int len) {
-     int n = lunghezza(l);
-     string res="";
-    if(pos>n){return res;}
-    else{
-
+    //inserisco la lunghezza in una variabile 
+    int n = lunghezza(l);
+    //inizializzo una stringa vuota
+    string res="";
+    /*se la posizione in input è più grande 
+    della grandezza effettiva della lista
+    ritorna res che è inizilizzata come vuota
+    */
+    if(pos>n){
+        return res;
+    }else{
+    //CASISTICA: pos è nella grandezza 
      for(int i=0;i<pos;i++){         
+    /*ciclo fino alla pos in input e sposto 
+    l fino a quella pos
+    */
          l = l ->next;
      }
 
     for(int j = 0;j<len;j++){
+        //ciclo fino alla len in input
+        //se non ho raggiunto la fine della lista:
         if(l!=nullptr){
-            
+            //sommo la stringa e sposto l
             res = res+l->info;
             l = l->next;
         }
+        /*se ho raggiunto la fine della lista:
+        non sommo e non sposto niente per evitare 
+        seg fault*/
     }
+    //ritorno la stringa sommata
     return res;
 }   
 }
+
 
 int main() {
   Lista l = nullptr;
