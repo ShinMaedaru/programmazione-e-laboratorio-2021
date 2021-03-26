@@ -56,8 +56,9 @@ int lunghezza(Lista l){
     }
     return count;
 } 
+
 string concat(Lista l, int pos, int len) {
-    //inserisco la lunghezza in una variabile 
+   //inserisco la lunghezza in una variabile 
     int n = lunghezza(l);
     //inizializzo una stringa vuota
     string res="";
@@ -90,10 +91,8 @@ string concat(Lista l, int pos, int len) {
     }
     //ritorno la stringa sommata
     return res;
-}   
+}      
 }
-
-
 int main() {
   Lista l = nullptr;
   int da, quanti;

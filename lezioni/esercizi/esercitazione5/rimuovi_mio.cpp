@@ -69,49 +69,50 @@ void distruggi_lista(Listadl& pt) {
 
 
 void rimuovi_elemento(Listadl& pt, Listadl& pc, int e) {
+    int i=0;
     Listadl temp;
     Listadl temp2=pt;
-    int count=0;
     while(temp2){
-        count++;
-        if(temp2->info == e){
-          //casistica: testa  
+        i++;
+        //se info è uguale ad e 
+        if(temp2->info ==e){
+            //casistica: testa
           if(temp2->prev == nullptr && temp2->next != nullptr){
                 temp = temp2;
-                temp2->next->prev = nullptr;
+                temp2 ->next->prev =nullptr;
                 pt = temp2->next;
-                temp2 =temp2->next;
+                temp2 = temp2->next;
                 delete(temp);
             }
-          //casistica in mezzo
+            //casistica in mezzo
           else if(temp2->prev != nullptr && temp2->next != nullptr){
-              temp = temp2;
-              temp2->next->prev =temp2->prev;
-              temp2->prev->next = temp2->next;
-              temp2= temp2->next;
-              delete(temp);
+                temp = temp2;
+                temp2->next->prev =temp2->prev;
+                temp2->prev->next =temp2->next;
+                temp2=temp2->next;
+                delete(temp);
             }
-            //casistica coda:
+            //casistica coda
             else if(temp2->next == nullptr && temp2->prev != nullptr){
                 temp = temp2;
                 pc = temp2->prev;
-                temp2->prev->next = nullptr;
-                temp2 = temp2->next;
+                temp2->prev->next =nullptr;
+                temp2=temp2->next;
                 delete(temp);
-                    
             }
             //casistica un elemento
             else if(temp2->next == nullptr && temp2->prev == nullptr){
-              delete(temp2);
-              pt = pc = nullptr;
-            } 
+                delete(temp2);
+                pt = pc=nullptr;
             }
-            else{
-                temp2 = temp2->next;
-         }
+        }
+        //se info non è uguale ad e
+        else{
+            temp2=temp2->next;
+        }
     }
 }
-          
+
 int main() {
   Listadl pt{nullptr}, pc{nullptr};
   leggi_lista(pt, pc);
