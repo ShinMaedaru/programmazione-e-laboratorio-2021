@@ -107,6 +107,7 @@ int somma(Listadl pt, int v) {
     }     
       pt=pt->next;
     }
+    distruggi_lista(pt);
     return temp;
 }
 int main() {
