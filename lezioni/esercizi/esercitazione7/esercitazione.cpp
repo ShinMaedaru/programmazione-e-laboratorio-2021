@@ -131,7 +131,7 @@ void List_int::remove_first() {
       last = nullptr; 
   }
 }
-
+//in
 
 
 
@@ -153,10 +153,23 @@ bool List_int::equal(const List_int& comp) const {
 
 
 void List_int::concat(List_int& sec) {
-        while(sec.l){
+        /*while(sec.l){
         append(sec.first());
         sec.remove_first();
+        }*/
+           
+    while(sec.l){
+        if(l){
+        last->next = sec.l;
+        last = sec.l;
         }
+        else{
+             l=sec.l;
+             last=sec.l;
+        }
+        sec.l=sec.l->next;
+
+    }
 }
 
 void read_list(List_int& l) {
@@ -174,8 +187,9 @@ void read_list(List_int& l) {
 int main() {
   List_int l1, l2;   //crea due liste vuote
 
- 
+  std::cout<<"dammi la dimensione e poi i valori"<<std::endl;
   read_list(l1);
+  std::cout<<"dammi la dimensione e poi i valori"<<std::endl;
   read_list(l2);
 
   if (l1.equal(l2)) 
