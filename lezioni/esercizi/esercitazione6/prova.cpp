@@ -15,22 +15,17 @@ int getMin(string s)
 		if( s[i] == '(' )
 		{
 			a++;
-//			cout<<a<<endl;
 		}
 		else{
-			if (( s[i] == ')' ) and (a>0 ))
+			if (( s[i] == ')' ) && (a>0 ))
 			{
 				a--;
-//				cout<<a<<endl;
 			}
 			else{
 				c++;
-//				cout<<c<<endl;
 			}
 		}
 	}
-//	cout<<a<<endl;
-//	cout<<c<<endl;
 	r=a+c;
 	return r;
 }
