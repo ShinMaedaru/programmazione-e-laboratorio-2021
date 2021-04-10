@@ -1,4 +1,5 @@
-     /*   int n = wallPositions.size();
+/*int maxHeight(vector<int> wallPositions, vector<int> wallHeights) {
+  int n = wallPositions.size();
         int m = wallHeights.size();
         int max = 0;
 
@@ -22,4 +23,4 @@
         }
 
         return max;
-        */
+ }*/

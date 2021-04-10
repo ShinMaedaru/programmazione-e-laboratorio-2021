@@ -34,9 +34,9 @@ vector<int> positiveArray(const vector<int>& vin){
     }
 }
 
-size_t min(const vector<int>& vin){
+int min(const vector<int>& vin){
     
-    size_t posmax = 0;
+    int posmax = 0;
     int m =vin.at(posmax);
     for(size_t i=1; i<vin.size();i++){
         if(vin.at(i)<m){
