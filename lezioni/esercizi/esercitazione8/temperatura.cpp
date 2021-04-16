@@ -183,6 +183,7 @@ min e max altrimenti ritorna false
  */
 bool check_time(Tempo min,Tempo max,Tempo t){
     bool result = true;
+    
     result = t.anno >=min.anno && t.anno <= max.anno ? result : false;
     if(t.anno == min.anno){
         result = t.mese >=min.mese ? result :false;
@@ -197,6 +198,10 @@ bool check_time(Tempo min,Tempo max,Tempo t){
                     }
                 }
             }
+            
+        }
+        if(result == false){
+            return result;
         }
     }
     if(t.anno == max.anno){
@@ -213,60 +218,76 @@ bool check_time(Tempo min,Tempo max,Tempo t){
                 }
             }
         }
+         if(result == false){
+            return result;
+        }
+        
     }
-    return result;
+   return result;
+    
 }
 //funziona
 bool checkCoordinate(Query q,Entry e){
     if(e.getLongitudine()>=q.getLongiMin() && e.getLongitudine()<= q.getLongiMax()){
+        
         if(e.getLatitudine()>=q.getLatiMin() && e.getLatitudine()<= q.getLatiMax()){
             return true;
         }else{
             return false;
         }
     }else{
-         return false;        
+         return false;         
     }
     
 }
 
 int average_temperature(istream& is){
     string temp;
+    
     getline(is,temp);
     Query prova(temp);
-//    cout<<temp<<std::endl;
+   // cout<<temp<<std::endl;
     int conta =0;
     int media=0;
     int risultato =0;
+   // cout<<"range latitudine min: "<<prova.getLatiMin()<<" max: "<<prova.getLatiMax()<<endl;
+   // cout<<"range longitudine min: "<<prova.getLongiMin()<<" max: " <<prova.getLongiMax()<<endl;
+
     while(is){
-   // cout<<"///////////////"<<std::endl;
+   //cout<<"///////////////"<<std::endl;
     getline(is,temp);
     Entry n1(temp); 
-   
- //   cout<<"temperatura: "<<n1.getTemperatura()<<endl;
-   // cout<<"latitudine :"<<n1.getLatitudine()<<" longitudine: "<< n1.getLongitudine()<<endl;
-    //cout<<n1.getNote()<<endl; 
-    if(checkCoordinate(prova,n1)){
+    //cout<<temp<<endl;
+
+    
+   //cout<<n1.getNote()<<endl; 
+  // cout<<"temperatura: "<<n1.getTemperatura()<<endl;
+  // cout<<"latitudine :"<<n1.getLatitudine()<<" longitudine: "<< n1.getLongitudine()<<endl;
+    if(n1.getNote()=="accept"){
        if(check_time(prova.getTmin(), prova.getTmax(), n1.getTime())){
-           if(n1.getNote()=="accept"){
+            if(checkCoordinate(prova,n1)){
                media = media+n1.getTemperatura();
                conta++;
-               //cout<<"entry accettata"<<endl;
-           }
-       }
+         //cout<<"entry accettata"<<endl;
+            }
+            }
+            
     }
+    
     else{
-        //cout<<"entri non accettata"<<endl;
-    }  
+    //cout<<"entri non accettata per reject"<<endl;
+    } 
+    // cout<<"somma: "<< media<<endl;
     }
+   // cout<<"passi: "<< conta<<endl;
+
     if (media !=0){
+      
      return media/conta;
         
     }else{
     return media;
-    }
-}
-
+    }}
 int main(){
 	cout << average_temperature(cin);
 }
